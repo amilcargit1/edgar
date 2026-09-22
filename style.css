@@ -1,0 +1,137 @@
+:root{
+  --space-black:#03040a;
+  --deep-blue:#0a1230;
+  --electric-blue:#3fa9ff;
+  --violet:#8b5cf6;
+  --cyan:#4dfff0;
+  --gold:#e8c987;
+  --white:#f4f6ff;
+  box-sizing:border-box;
+}
+*{box-sizing:border-box;}
+html,body{
+  margin:0;padding:0;width:100%;height:100%;
+  background:var(--space-black);
+  color:var(--white);
+  font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+  overflow:hidden;
+  overscroll-behavior:none;
+}
+#scene{position:fixed;inset:0;display:block;touch-action:none;}
+
+.hidden{display:none !important;}
+
+/* ---------- Loading ---------- */
+#loading{
+  position:fixed;inset:0;z-index:50;
+  display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(ellipse at center,var(--deep-blue) 0%,var(--space-black) 70%);
+}
+.loading-inner{text-align:center;}
+.loading-emoji{font-size:3rem;margin-bottom:.5rem;}
+.loading-text{opacity:.8;margin-bottom:1.2rem;letter-spacing:.05em;}
+.loading-bar-track{
+  width:220px;height:4px;border-radius:4px;background:rgba(255,255,255,.1);
+  overflow:hidden;margin:0 auto;
+}
+#loading-bar-fill{
+  height:100%;width:0%;
+  background:linear-gradient(90deg,var(--electric-blue),var(--cyan));
+  transition:width .25s ease;
+}
+#loading-percent{margin-top:.6rem;font-size:.85rem;opacity:.6;}
+
+/* ---------- Overlays (generic) ---------- */
+#intro,#edgar-card,#friendship,#end-scene,#fallback{
+  position:fixed;inset:0;z-index:20;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:2rem;
+  pointer-events:none;
+}
+#intro *, #edgar-card *, #friendship *, #end-scene *, #fallback *{pointer-events:auto;}
+
+.glow-text{
+  font-size:1.6rem;letter-spacing:.08em;margin:0 0 .5rem;
+  text-shadow:0 0 18px var(--electric-blue),0 0 36px var(--violet);
+}
+.sub-text{opacity:.75;margin:0 0 1.8rem;font-size:.95rem;}
+
+.glass-btn{
+  padding:.85rem 1.6rem;border-radius:999px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.25);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  color:var(--white);font-size:.95rem;letter-spacing:.03em;
+  cursor:pointer;margin:.4rem;
+  box-shadow:0 0 0 rgba(63,169,255,0);
+  transition:box-shadow .25s ease, transform .15s ease, background .25s ease;
+  min-height:48px;
+}
+.glass-btn.primary{
+  border-color:var(--electric-blue);
+  box-shadow:0 0 18px rgba(63,169,255,.35);
+}
+.glass-btn.small{font-size:.8rem;padding:.6rem 1.1rem;opacity:.85;}
+.glass-btn:hover{background:rgba(255,255,255,.12);}
+.glass-btn:active{transform:scale(.96);box-shadow:0 0 26px rgba(63,169,255,.6);}
+
+/* ---------- Holo card (edgar / point / friendship / end) ---------- */
+.holo-title{
+  font-size:1.4rem;letter-spacing:.15em;font-weight:600;
+  color:var(--cyan);
+  text-shadow:0 0 14px var(--cyan),0 0 30px var(--electric-blue);
+  margin-bottom:.6rem;
+}
+.holo-sub{opacity:.8;font-size:.9rem;max-width:320px;}
+
+#point-card{
+  position:fixed;z-index:25;
+  max-width:240px;padding:.9rem 1.1rem;border-radius:14px;
+  background:rgba(10,18,48,.55);
+  border:1px solid rgba(77,255,240,.4);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  box-shadow:0 0 24px rgba(77,255,240,.25);
+  font-size:.9rem;pointer-events:none;
+  transform:translate(-50%,-120%);
+}
+
+#btn-continue{position:fixed;bottom:8%;left:50%;transform:translateX(-50%);z-index:22;}
+
+/* ---------- Final message lines ---------- */
+#final-message{z-index:30;gap:.15rem;}
+#final-message p{
+  opacity:0;transform:translateY(10px);
+  transition:opacity 1s ease, transform 1s ease;
+  margin:.15rem 0;font-size:1rem;
+}
+#final-message p.show{opacity:.92;transform:translateY(0);}
+
+/* ---------- Floating UI ---------- */
+#ui-floating{
+  position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);right:14px;
+  z-index:40;display:flex;gap:.5rem;
+}
+.icon-btn{
+  width:42px;height:42px;border-radius:50%;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.25);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  color:var(--white);font-size:1rem;cursor:pointer;
+}
+.icon-btn:active{transform:scale(.92);}
+
+#scene-indicator{
+  position:fixed;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);left:14px;
+  z-index:40;font-size:.7rem;letter-spacing:.12em;opacity:.5;
+}
+
+/* ---------- Fallback ---------- */
+#fallback{background:var(--space-black);z-index:60;}
+.fallback-content{max-width:340px;}
+.fallback-content p{opacity:.8;}
+
+/* ---------- Responsive ---------- */
+@media (max-width:420px){
+  .glow-text{font-size:1.25rem;}
+  .holo-title{font-size:1.1rem;}
+}
