@@ -1,0 +1,9 @@
+{
+  "name": "universo-edgar",
+  "version": "1.0.0",
+  "description": "Experiencia web 3D interactiva dedicada a Edgar",
+  "private": true,
+  "scripts": {
+    "start": "npx serve . -l 3000"
+  }
+}
