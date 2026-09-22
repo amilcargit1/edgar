@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+<title>Universo de Edgar</title>
+<meta name="description" content="Una pequeña aventura por el universo, dedicada a Edgar." />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <canvas id="scene"></canvas>
+
+  <!-- Loading screen -->
+  <div id="loading">
+    <div class="loading-inner">
+      <div class="loading-emoji">🌌</div>
+      <div class="loading-text">Preparando el universo...</div>
+      <div class="loading-bar-track"><div id="loading-bar-fill"></div></div>
+      <div id="loading-percent">0%</div>
+    </div>
+  </div>
+
+  <!-- Intro overlay -->
+  <div id="intro" class="hidden">
+    <h1 class="glow-text">✨ PARA MI MEJOR AMIGO ✨</h1>
+    <p class="sub-text">Una pequeña aventura por el universo...</p>
+    <button id="btn-enter" class="glass-btn primary">🚀 ENTRAR AL UNIVERSO</button>
+    <button id="btn-sound-intro" class="glass-btn small">🔊 ACTIVAR SONIDO</button>
+  </div>
+
+  <!-- Holographic name card (scene 4) -->
+  <div id="edgar-card" class="hidden">
+    <div class="holo-title">HERMANO EDGAR</div>
+    <div class="holo-sub">Un amigo que se convirtió en familia.</div>
+    <button id="btn-explore" class="glass-btn primary hidden">🌎 EXPLORAR</button>
+  </div>
+
+  <!-- Interactive point card -->
+  <div id="point-card" class="holo-card hidden"></div>
+
+  <!-- Continue button after exploring -->
+  <button id="btn-continue" class="glass-btn primary hidden">💫 CONTINUAR</button>
+
+  <!-- Friendship scene text -->
+  <div id="friendship" class="hidden">
+    <div class="holo-title">🫂 AMISTAD</div>
+    <div class="holo-sub">Hay amigos que terminan convirtiéndose en familia.</div>
+  </div>
+
+  <!-- Final message -->
+  <div id="final-message" class="hidden">
+    <p data-line>Edgar,</p>
+    <p data-line>hay personas que llegan a tu vida como amigos,</p>
+    <p data-line>pero con el tiempo terminan convirtiéndose en familia.</p>
+    <p data-line>Gracias por cada momento,</p>
+    <p data-line>cada risa,</p>
+    <p data-line>cada locura</p>
+    <p data-line>y cada recuerdo.</p>
+    <p data-line>Esta pequeña parte del universo</p>
+    <p data-line>es solamente para recordarte</p>
+    <p data-line>que siempre tendrás un lugar especial.</p>
+    <p data-line>🌎🫂✨</p>
+  </div>
+
+  <!-- Final scene -->
+  <div id="end-scene" class="hidden">
+    <div class="holo-title">🌎 HERMANO EDGAR</div>
+    <div class="holo-sub">Hasta el infinito y más allá. ✨</div>
+    <button id="btn-restart" class="glass-btn primary">🔄 VOLVER A EMPEZAR</button>
+  </div>
+
+  <!-- Floating UI -->
+  <div id="ui-floating" class="hidden">
+    <button id="btn-sound" class="icon-btn" aria-label="Sonido">🔊</button>
+    <button id="btn-fullscreen" class="icon-btn" aria-label="Pantalla completa">⛶</button>
+  </div>
+
+  <!-- Scene indicator -->
+  <div id="scene-indicator" class="hidden">01 — UNIVERSO</div>
+
+  <!-- WebGL fallback -->
+  <div id="fallback" class="hidden">
+    <div class="fallback-stars"></div>
+    <div class="fallback-content">
+      <div class="loading-emoji">🌌</div>
+      <p>Tu dispositivo no puede mostrar la experiencia 3D completa.</p>
+      <h2 class="glow-text">HERMANO EDGAR</h2>
+      <p class="sub-text">Un amigo que se convirtió en familia. Hasta el infinito y más allá. ✨</p>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
